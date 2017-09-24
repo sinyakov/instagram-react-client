@@ -21,7 +21,9 @@ html {
 
   margin: 0;
 
+  font-size: 1.75rem;
   font-weight: 900;
+  line-height: 1.1;
 }
 
 .main-header__tagline {
@@ -46,7 +48,9 @@ html {
 }
 
 .card {
+  display: flex;
   overflow: hidden;
+  flex-direction: column;
 
   max-width: 100%;
   margin: 0 0 1rem;
@@ -57,10 +61,12 @@ html {
 }
 
 .card__image {
+  display: flex;
+
   max-width: 100%;
 }
 
 .card__text {
   margin: 0;
-  padding: 0.75rem;
+  padding: 0.5rem;
 }

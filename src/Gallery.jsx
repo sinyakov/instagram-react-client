@@ -1,53 +1,57 @@
-import React from 'react';
+import React, { Component } from 'react';
+import jsonp from 'jsonp';
+import { token } from './constants';
 
 import Card from './Card';
 
-const cardsMock = [
-  {
-    url:
-      'https://instagram.fhen1-1.fna.fbcdn.net/t51.2885-15/e35/21879266_1955265944746318_7760295026654969856_n.jpg',
-    alt: '123',
-    text: 'Каждый год около четырех миллионов кошек съедают в Азии.',
-  },
-  {
-    url:
-      'https://instagram.fhen1-1.fna.fbcdn.net/t51.2885-15/e35/21879469_689007304626253_1429359171874062336_n.jpg',
-    alt: '123',
-    text:
-      'В среднем кошки тратят 2/3 суток на сон. Это означает, что девятилетний кот был активен только три года своей жизни.',
-  },
-  {
-    url:
-      'https://instagram.fhen1-1.fna.fbcdn.net/t51.2885-15/e35/21980435_139046300039950_3926953293825179648_n.jpg',
-    alt: '123',
-    text:
-      'В отличие от собак, кошки не имеют пристрастия к сладкому. Ученые считают, что это связано с мутацией в одном из ключевых рецепторов вкуса.',
-  },
-  {
-    url:
-      'https://instagram.fhen1-1.fna.fbcdn.net/t51.2885-15/e35/21980916_2017885718445195_6553298470747242496_n.jpg',
-    alt: '123',
-    text:
-      'В отличие от собак, кошки не имеют пристрастия к сладкому. Ученые считают, что это связано с мутацией в одном из ключевых рецепторов вкуса.',
-  },
-  {
-    url:
-      'https://instagram.fhen1-1.fna.fbcdn.net/t51.2885-15/e35/21909546_119835172016177_2218938993133748224_n.jpg',
-    alt: '123',
-    text:
-      'В отличие от собак, кошки не имеют пристрастия к сладкому. Ученые считают, что это связано с мутацией в одном из ключевых рецепторов вкуса.',
-  },
-];
-
 const renderCards = cards =>
   cards.map(card => (
-    <div className="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-      <Card url={card.url} alt={card.alt} text={card.text} />
+    <div className="col-xs-12 col-sm-6 col-md-4 col-lg-3" key={card.id}>
+      <Card card={card} />
     </div>
   ));
 
-export default () => (
-  <div className="gallery">
-    <div className="row">{renderCards(cardsMock)}</div>
-  </div>
-);
+export default class componentName extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isLoading: true,
+    };
+  }
+
+  componentWillMount() {
+    const url = `https://api.instagram.com/v1/users/self/media/recent/?access_token=${token}`;
+
+    jsonp(url, null, (err, res) => {
+      if (err) {
+        console.error(err.message);
+      } else {
+        console.log(res);
+        const data = res.data.map(card => ({
+          id: card.id,
+          link: card.link,
+          time: card.created_time,
+          likes: card.likes.count,
+          loRes: card.images.low_resolution.url,
+          hiRes: card.images.standard_resolution.url,
+          caption: card.caption ? card.caption.text : null,
+        }));
+
+        this.setState({
+          isLoading: false,
+          data,
+        });
+      }
+    });
+  }
+
+  render() {
+    return (
+      <div className="gallery">
+        <div className="row">
+          {this.state.isLoading ? 'Загрузка' : renderCards(this.state.data)}
+        </div>
+      </div>
+    );
+  }
+}

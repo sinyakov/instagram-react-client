@@ -2,9 +2,16 @@ import React from 'react';
 import 'normalize.css';
 import 'flexboxgrid2/flexboxgrid2.css';
 
-export default props => (
+export default ({ card }) => (
   <div className="card">
-    <img className="card__image" src={props.url} alt={props.alt} />
-    <p className="card__text">{props.text}</p>
+    <a href={card.link}>
+      <img
+        className="card__image"
+        src={card.loRes}
+        srcSet={`${card.hiRes} 2x`}
+        alt={card.caption}
+      />
+    </a>
+    {card.caption && <p className="card__text">{card.caption}</p>}
   </div>
 );

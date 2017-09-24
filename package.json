@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "flexboxgrid2": "^7.0.0-alpha7",
+    "jsonp": "^0.2.1",
     "normalize.css": "^7.0.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1"
