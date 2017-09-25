@@ -91,63 +91,6 @@ body::before {
   margin: 1rem 0;
 }
 
-.card {
-  display: flex;
-  overflow: hidden;
-  flex-direction: column;
-
-  max-width: 100%;
-  margin: 0 0 2rem;
-
-  text-align: left;
-
-  border-radius: 0.25rem;
-  background: #fff;
-  box-shadow: 0 0 4px #bbb;
-}
-
-.card__image {
-  display: flex;
-
-  width: 100%;
-
-  transition: transform 0.25s ease-in-out;
-}
-
-.card__link {
-  position: relative;
-
-  display: block;
-  overflow: hidden;
-
-  color: rgb(255, 255, 255);
-}
-
-.card__link:hover .card__image {
-  transform: scale(1.05);
-}
-
-.card__meta {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-
-  display: flex;
-  justify-content: space-between;
-
-  box-sizing: border-box;
-  width: 100%;
-  padding: 0.25rem 0.5rem;
-
-  color: rgb(255, 255, 255);
-  background-color: rgba(0, 0, 0, 0.5);
-}
-
-.card__text {
-  margin: 0;
-  padding: 0.5rem;
-}
-
 .loading {
   width: 5rem;
   height: 5rem;

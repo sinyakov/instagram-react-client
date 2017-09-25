@@ -7,9 +7,10 @@
     "jsonp": "^0.2.1",
     "moment": "^2.18.1",
     "normalize.css": "^7.0.0",
+    "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
-    "prop-types": "^15.5.10"
+    "styled-components": "^2.1.2"
   },
   "devDependencies": {
     "eslint": "^4.7.2",
