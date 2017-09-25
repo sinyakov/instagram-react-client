@@ -74,15 +74,3 @@ body::before {
 .main-header__logo:hover {
   transform: rotateZ(360deg);
 }
-
-.main-footer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  padding: 1rem 0;
-
-  color: #666;
-
-  font-size: 0.75rem;
-}
