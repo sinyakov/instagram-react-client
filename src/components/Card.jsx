@@ -1,11 +1,15 @@
 import React from 'react';
-import 'normalize.css';
-import 'flexboxgrid2/flexboxgrid2.css';
+import moment from 'moment';
+import 'moment/locale/ru';
 
-const getDate = num => new Date(num * 1000).toDateString();
+const getDate = (num) => {
+  console.log(moment.locale);
+  moment.locale('ru');
+  return moment(num * 1000).format('DD MMMM YYYY');
+};
 
-export default ({ card, order }) => (
-  <div className="card" style={{ transform: `rotate(${order % 2 ? 1 : -1}deg)` }}>
+export default ({ card }) => (
+  <div className="card">
     <a className="card__link" href={card.link}>
       <img
         className="card__image"

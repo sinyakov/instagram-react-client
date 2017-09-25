@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import jsonp from 'jsonp';
-import { token } from './constants';
+import { token } from '../constants';
 
 import Card from './Card';
 
