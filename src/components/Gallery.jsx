@@ -1,8 +1,52 @@
 import React, { Component } from 'react';
+import styled, { keyframes } from 'styled-components';
 import jsonp from 'jsonp';
-import { token } from '../constants';
 
+import { token } from '../constants';
 import Card from './Card';
+
+const Wrapper = styled.div`margin: 1rem 0;`;
+
+const Button = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 6rem;
+  height: 6rem;
+  margin: 1rem;
+  cursor: pointer;
+  color: #000;
+  border: solid 0.5rem rgba(98, 188, 78, 1);
+  border-bottom-color: #fff;
+  border-radius: 50%;
+  background: rgba(98, 188, 78, 1);
+  box-shadow: 0 0 6px #aaa;
+  font-family: 'Kurale', Helvetica, Arial, sans-serif;
+
+  &:hover {
+    box-shadow: 0 0 3px #aaa;
+  }
+`;
+
+const rotate360 = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+`;
+
+const Spinner = styled.div`
+  width: 5rem;
+  height: 5rem;
+  margin: 1rem;
+  animation: ${rotate360} 1s infinite linear;
+  border: solid 0.5rem rgba(98, 188, 78, 1);
+  border-bottom-color: #fff;
+  border-radius: 50%;
+`;
 
 const renderCards = cards =>
   cards.map((card, index) => (
@@ -66,19 +110,17 @@ export default class componentName extends Component {
   render() {
     const isShowingButton = !this.state.isLoadingMore && this.state.nextUrl;
     return (
-      <div className="gallery">
+      <Wrapper>
+        <div className="row middle-xs">{!this.state.isLoading && renderCards(this.state.data)}</div>
         <div className="row middle-xs center-xs">
-          {!this.state.isLoading && renderCards(this.state.data)}
-        </div>
-        <div className="row middle-xs center-xs">
-          {(this.state.isLoading || this.state.isLoadingMore) && <div className="loading" />}
+          {(this.state.isLoading || this.state.isLoadingMore) && <Spinner />}
           {isShowingButton && (
-            <button onClick={this.loadMore} className="load-btn" type="button">
+            <Button onClick={this.loadMore} type="button">
               Больше котиков
-            </button>
+            </Button>
           )}
         </div>
-      </div>
+      </Wrapper>
     );
   }
 }
