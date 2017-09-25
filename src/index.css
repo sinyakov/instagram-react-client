@@ -2,7 +2,7 @@ html {
   color: #171717;
   background: #eee;
 
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: 'Kurale', Helvetica, Arial, sans-serif;
   font-size: 16px;
 }
 
@@ -33,6 +33,8 @@ body::before {
   padding: 1rem 0;
 
   text-align: center;
+
+  font-family: 'Neucha', cursive;
 }
 
 .main-header__title {
@@ -40,8 +42,7 @@ body::before {
 
   margin: 0;
 
-  font-size: 2rem;
-  font-weight: 900;
+  font-size: 2.25rem;
   line-height: 1.1;
 }
 
@@ -54,10 +55,20 @@ body::before {
 .main-header__logo {
   display: inline-block;
 
-  width: 64px;
-  margin: 0 8px;
+  width: 4rem;
+  margin: 0 0.5rem;
 
   transition: transform 0.75s ease-in-out;
+}
+
+@media (max-width: 40rem) {
+  .main-header__title {
+    font-size: 2rem;
+  }
+  .main-header__logo {
+    width: 3.5rem;
+    margin: 0 0.5rem 0 0;
+  }
 }
 
 .main-header__logo:hover {
@@ -145,7 +156,7 @@ body::before {
   animation: spin 1s infinite linear;
 
   border: solid 0.5rem rgba(98, 188, 78, 1);
-  border-top-color: #fff;
+  border-bottom-color: #fff;
   border-radius: 50%;
 }
 
@@ -153,4 +164,29 @@ body::before {
   100% {
     transform: rotate(360deg);
   }
+}
+
+.load-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 6rem;
+  height: 6rem;
+  margin: 1rem;
+
+  cursor: pointer;
+
+  color: #000;
+  border: solid 0.5rem rgba(98, 188, 78, 1);
+  border-bottom-color: #fff;
+  border-radius: 50%;
+  background: rgba(98, 188, 78, 1);
+  box-shadow: 0 0 6px #aaa;
+
+  font-family: 'Kurale', Helvetica, Arial, sans-serif;
+}
+
+.load-btn:hover {
+  box-shadow: 0 0 3px #aaa;
 }

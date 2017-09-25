@@ -6,7 +6,7 @@ import Card from './Card';
 
 const renderCards = cards =>
   cards.map((card, index) => (
-    <div className="col-xs-12 col-sm-6 col-md-4 col-lg-3" key={card.id}>
+    <div className="col-xs-12 col-sm-6 col-md-4 col-xl-3" key={card.id}>
       <Card card={card} order={index} />
     </div>
   ));
@@ -69,6 +69,8 @@ export default class componentName extends Component {
       <div className="gallery">
         <div className="row middle-xs center-xs">
           {!this.state.isLoading && renderCards(this.state.data)}
+        </div>
+        <div className="row middle-xs center-xs">
           {(this.state.isLoading || this.state.isLoadingMore) && <div className="loading" />}
           {isShowingButton && (
             <button onClick={this.loadMore} className="load-btn" type="button">

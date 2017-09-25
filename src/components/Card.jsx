@@ -4,7 +4,6 @@ import moment from 'moment';
 import 'moment/locale/ru';
 
 const getDate = (num) => {
-  console.log(moment.locale);
   moment.locale('ru');
   return moment(num * 1000).format('DD MMMM YYYY');
 };
