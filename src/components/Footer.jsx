@@ -9,7 +9,7 @@ const Wrapper = styled.div`
   padding: 1rem 0;
   color: #666;
   font-size: 0.75rem;
-  line-height: 1.5;
+  line-height: 1.35;
 `;
 
 const Copyright = styled.div``;
