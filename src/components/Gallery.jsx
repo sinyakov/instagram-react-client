@@ -78,7 +78,7 @@ export default class componentName extends Component {
     jsonp(url, null, (err, res) => {
       if (err) {
         console.error(err.message);
-      } else {
+      } else if (res.meta.code === 200) {
         const nextUrl = res.pagination.next_url;
         const cards = res.data.map(card => ({
           id: card.id,
